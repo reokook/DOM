@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY Shopping List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+           
+        }
+        #shoppingList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #shoppingList li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .delete-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Shopping List</h1>
+<form id="shoppingForm">
+    <input type="text" id="itemInput" placeholder="Enter an item" required>
+    <button type="submit">Add</button>
+</form>
+<ul id="shoppingList"></ul>
+
+<script>
+    document.getElementById('shoppingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const itemInput = document.getElementById('itemInput');
+        const itemValue = itemInput.value.trim();
+
+        if (itemValue) {
+            const listItem = document.createElement('li');
+            listItem.textContent = itemValue;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete-button';
+            deleteButton.addEventListener('click', function() {
+                listItem.remove();
+            });
+
+            listItem.appendChild(deleteButton);
+            document.getElementById('shoppingList').appendChild(listItem);
+
+            itemInput.value = '';
+            itemInput.focus();
+        }
+    });
+</script>
+
+</body>
+</html>

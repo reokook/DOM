@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Long Words</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+
+<p id="paragraph">Jungkook, whose full name is **Jeon Jung-kook**, is a South Korean singer and songwriter. He is best known as a member of the globally popular boy band **BTS**. Jungkook was born on **September 1, 1997**, in Busan, South Korea. 
+
+He has also made a name for himself as a solo artist. His solo debut single, **"Seven"** featuring Latto, was released in 2023 and broke numerous records. He followed up with another hit single, **"3D"** featuring Jack Harlow, which also achieved significant success.
+
+Jungkook is known for his powerful vocals, dance skills, and charming personality. He continues to be a major figure in the world of K-pop and beyond.
+
+Are you a fan of BTS or Jungkook's solo work?
+</p>
+
+<script>
+    const paragraph = document.getElementById('paragraph');
+    const words = paragraph.innerHTML.split(' ');
+
+    const highlightedWords = words.map(word => {
+        if (word.length > 8) {
+            return `<span class="highlight">${word}</span>`;
+        }
+        return word;
+    });
+
+    paragraph.innerHTML = highlightedWords.join(' ');
+</script>
+
+</body>
+</html>
